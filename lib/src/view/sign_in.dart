@@ -30,8 +30,7 @@ class SignInView extends GetView<SignInController> {
   Widget _title() {
     return const Padding(
       padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 24.0),
-      child: Align(
-          alignment: Alignment.bottomLeft,
+      child: Center(
           child: Text('Sign In',
               style: TextStyle(
                   fontFamily: 'Ubuntu',
