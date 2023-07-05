@@ -9,7 +9,8 @@ class HomeView extends GetView<HomeController> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Firebase getx CREUD'),
+        centerTitle: true,
+        title: const Text('오늘의 할일'),
         actions: [
           IconButton(
               onPressed: controller.signOut, icon: const Icon(Icons.logout))
@@ -18,7 +19,14 @@ class HomeView extends GetView<HomeController> {
       body: Obx(
         () => Column(
           children: [
+            _date(),
+            SizedBox(
+              height: 20,
+            ),
             _create(),
+            SizedBox(
+              height: 20,
+            ),
             _todoList(),
           ],
         ),
@@ -28,6 +36,7 @@ class HomeView extends GetView<HomeController> {
 
   Widget _create() {
     return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
       children: [
         SizedBox(
           width: 250,
@@ -71,6 +80,17 @@ class HomeView extends GetView<HomeController> {
             subtitle: Text(todoModel.time.toString()),
           );
         },
+      ),
+    );
+  }
+
+  Widget _date() {
+    DateTime now = DateTime.now();
+    String formattedDate = ' ${now.month}월 ${now.day}일';
+    return Center(
+      child: Text(
+        '${formattedDate}',
+        style: const TextStyle(fontSize: 24),
       ),
     );
   }
