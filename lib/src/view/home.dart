@@ -10,7 +10,7 @@ class HomeView extends GetView<HomeController> {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: const Text('오늘의 할일'),
+        title: const Text('오늘의 할 일'),
         actions: [
           IconButton(
               onPressed: controller.signOut, icon: const Icon(Icons.logout))
@@ -19,13 +19,16 @@ class HomeView extends GetView<HomeController> {
       body: Obx(
         () => Column(
           children: [
+            const SizedBox(
+              height: 25,
+            ),
             _date(),
             const SizedBox(
-              height: 40,
+              height: 45,
             ),
             _create(),
             const SizedBox(
-              height: 20,
+              height: 40,
             ),
             _todoList(),
           ],
@@ -48,6 +51,9 @@ class HomeView extends GetView<HomeController> {
                 ),
                 borderRadius: BorderRadius.circular(16.0)),
             child: TextField(
+              decoration: InputDecoration(
+                border: InputBorder.none,
+              ),
               controller: controller.createController,
             ),
           ),
@@ -115,7 +121,7 @@ class HomeView extends GetView<HomeController> {
     return Center(
       child: Text(
         '${formattedDate}',
-        style: const TextStyle(fontSize: 24),
+        style: const TextStyle(fontSize: 26, fontWeight: FontWeight.bold),
       ),
     );
   }
